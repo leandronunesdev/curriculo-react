@@ -1,146 +1,116 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css"
+import Biografia from './components/Biografia'
+import Sidebar from './components/Sidebar'
+import ListaExperiencias from './components/ListaExperiencias'
+import Perfil from './components/Perfil'
+
 
 
 function App() {
 
   const fakeAPI =  
     {
-      nome: 'Lisa Simpson',
-      ocupacao: 'Developer',
-      resumo: '8 anos e já sei React',
-      perfilProfissional: 'Faço miojo bom',
+      nome: 'Leandro Nunes',
+      ocupacao: 'Front-End Developer | React Developer',
+      resumo: '30 anos, pai orgulhoso da Marilene',
+      perfilProfissional: 'Desenvolvedor Front-end e solucionador de problemas. A partir de uma experiência de 6 anos na indústria de pagamentos online, veio a paixão pelo mundo digital. Hoje atuo como desenvolvedor freelancer e estou disponível para novos desafios e oportunidades. Nesse site você poderá conhecer um pouco mais do meu trabalho :)',
       contatos: [
         {
           id: 1,
-          tipo: 'telefone',
-          contato: '19 0000-0000'
+          tipo: 'TELEFONE',
+          contato: '41 99607-0390'
         },
         {
           id: 2,
-          tipo: 'email',
-          contato: 'nome@dev.com'
-        }
+          tipo: 'E-MAIL',
+          contato: 'nunes.pessoal@gmail.com'
+        },
+        {
+          id: 3,
+          tipo: 'ENDEREÇO',
+          contato: 'Curitiba, Paraná'
+        },
+        {
+          id: 4,
+          tipo: 'LINKEDIN',
+          contato: '/nunesprofissional'
+        },
+        {
+          id: 5,
+          tipo: 'GITHUB',
+          contato: '/leandronunesdev'
+        },
+        {
+          id: 6,
+          tipo: 'WEBSITE',
+          contato: 'www.leandronunes.dev'
+        },
+
       ],
       educacao: [
         {
           id: 1,
-          instituicao: 'EMEF',
-          curso: 'Ensino basico'
+          instituicao: 'UFPR',
+          curso: 'Bacharel em Administração, 2017'
         },
         {
           id: 2,
-          instituicao: 'ETEC',
-          curso: 'Como ser dev'
+          instituicao: 'UFPR',
+          curso: 'Bacharel em Comunicação Social, 2013'
         }
       ],
       experiencia: [
         {
           id: 1,
-          cargo: 'Front',
-          periodo: 'Agosto 2019 - Atualmente',
-          empresa: 'NASA',
-          local: 'Nova York',
-          conteudo: 'Fazia nada e ganhava bem'
+          cargo: 'Front-End Developer',
+          periodo: 'SET 2020 - Atual',
+          empresa: 'FREELANCE',
+          local: 'Curitiba',
+          conteudo: 'Desenvolvimento de projetos pessoais e construção de portfolio'
         },
         {
           id: 2,
-          cargo: 'Back',
-          periodo: 'Agosto 2018 - Agosto 2019',
-          empresa: 'CIA',
-          local: 'Boston',
-          conteudo: 'Fazia nada e ganhava mal'
+          cargo: 'Compliance Analyst',
+          periodo: '2016 - ATUAL',
+          empresa: 'EBANX',
+          local: 'Curitiba',
+          conteudo: 'Assistência na implementação e desenvolvimento da área de Risk and Compliance. Monitoramento de transações de clientes. Investigação de transações atípicas. Geração de reports à gerência executiva. Mapeamento de processos, redação de manuais, guias e Procedimentos Operacionais. Treinamento e suporte à área comercial relacionados à Compliance e Prevenção à Lavagem de Dinheiro.'
+        },
+        {
+          id: 3,
+          cargo: 'Customer Service Analyst',
+          periodo: 'NOV 2014 - JUL 2016',
+          empresa: 'EBANX',
+          local: 'Curitiba',
+          conteudo: 'Atendimento ao cliente via e-mail, telefone, chat e redes sociais'
         }
       ]
   }
-  return (
-    <main>
-      <div className="perfil">
-        <img src="https://i.pravatar.cc/400" alt="Perfil" />
-      </div>
-      <div className="biografia">
-        <h1>
-          Nome Sobrenome
-        </h1>
-        <div className="ocupacao">Developer</div>
-        <p>109 anos e pronta pra ser dev</p>
-      </div>
 
-      <div className="titulo">
-        Perfil <br /> Profissional
-      </div>
+  const [resposta] = useState(fakeAPI)
 
-      <div className="perfil-profissional">
-        <p>
-          Faço nada da vida
-        </p>
-      </div>
-      <aside>
-        <div className="sidebar">
-          <h3>Contatos</h3>
+  return (    
+      <main> 
 
-          <button>Mostrar Contatos</button>
+        <div className="perfil">
+            <img src="https://avatars.githubusercontent.com/u/60386045?s=460&u=b81d71f87ddbf5a2da61abf86227ede788de7d32&v=4
+            " alt="Perfil" />
+        </div>
+        
+        <Biografia resposta={resposta}/>
 
-          <div className="lista-de-contatos">
-            <li>
-              <div className="item-contato">
-                <h4>TELEFONE</h4>
-                <p>(19) 0000-0000</p>
-              </div>
-            </li>
-            <li>
-              <div className="item-contato">
-                <h4>TELEFONE</h4>
-                <p>(19) 0000-0000</p>
-              </div>
-            </li>
-          </div>
+        <div className="titulo">
+          Perfil <br /> Profissional
         </div>
 
-        <div className="sidebar">
-          <h3>Educação</h3>
-          <div className="lista-de-formacao">
-            <li>
-              <h4>Faculdade da vida</h4>
-              <p>Uniesquina 2019 - 2022</p>
-            </li>
-            <li>
-              <h4>EMEF</h4>
-              <p>Qualquer lugar 2010 - 2013</p>
-            </li>
-          </div>
-        </div>
-      </aside>
-      <div className="experience">
-        <h2>Experiência Profissional</h2>
+        <Perfil resposta={resposta} />        
 
-        <div className="experience-item">
-          <div>
-            <h4>Developer</h4>
-            <span>Novembro 2019 - Atualmente</span>
+        <Sidebar resposta={resposta} />
 
-            <strong>Empresa da hora</strong>
-            <span>Campinas - São Paulo</span>
-          </div>
-          <p>
-            Fazia nada
-        </p>
-        </div>
-        <div className="experience-item">
+        <ListaExperiencias resposta={resposta} />
 
-          <div>
-            <h4>Developer</h4>
-            <span>Agosto 2019 - Novembro 2019</span>
-
-            <strong>Empresa estranha</strong>
-            <span>Sumaré - São Paulo</span>
-          </div>
-          <p>
-            Fazia menos
-        </p>
-        </div>
-      </div>
-    </main>
+      </main>
   );
 }
 
